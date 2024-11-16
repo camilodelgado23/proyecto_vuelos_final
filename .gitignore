@@ -1,0 +1,21 @@
+# Ignorar todos los archivos en csv/ excepto los específicos que quieras rastrear
+/csv/
+csv/*
+/csv/train.csv
+# Exceptuar específicamente train.csv
+#!csv/train.csv
+
+# Ignorar pycache y entornos virtuales
+**/__pycache__/
+**/venv/
+
+# Ignorar logs y subdirectorios
+airflow/logs/
+airflow/logs/*
+logs/
+logs/*
+# Ignorar CSV dentro de airflow/dags/csv
+airflow/dags/csv/*
+/airflow/dags/csv/*
+# Ignorar archivos .log en cualquier parte
+*.log
