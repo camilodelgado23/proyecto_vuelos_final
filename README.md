@@ -3,7 +3,6 @@
 Por:  
 - Camilo Jose Delgado Bolaños 
 -  Jose Daniel Carrera 
-- John Sebastian arias soto 
 
 
 ## Contexto :page_facing_up:
