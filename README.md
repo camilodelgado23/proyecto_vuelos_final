@@ -4,12 +4,13 @@ Por:
 - Camilo Jose Delgado Bolaños 
 -  Jose Daniel Carrera 
 
-
 ## Contexto :page_facing_up:
 
 Este Dataset fue extraido de la pagina web kaggle una plataforma de competencia de ciencia de datos y una comunidad en línea para científicos de datos y profesionales del aprendizaje automático de Google LLC.
 
 Este Dataset contiene informacion sobre vuelos retrasados en el año 2019 con informacion sobre el clima, aereopuerto entre otros, para un mayor detalle puede visitar la pagina de donde se extrajo el dataset en el siguiente enlace: https://www.kaggle.com/datasets/threnjen2019-airline-delays-and-cancellations?select=train.csv
+
+Este Dataset fue complementado con la informacion extraida de la siguiente API: https://api.aviationstack.com/v1/airplanes la cual ofrece acceso sencillo a datos globales de aviación, incluyendo vuelos en tiempo real, históricos y futuros, así como rutas aéreas y otra información actualizada.
 
 ## Descripcion de columnas Dataset :clipboard:
 
@@ -47,6 +48,35 @@ Este Dataset contiene informacion sobre vuelos retrasados en el año 2019 con in
 - **tmax:** Temperatura máxima del día.
 - **awnd:** Velocidad máxima del viento del día
 
+## Descripcion de columnas API :computer:
+
+- **results:** Devuelve un array de resultados, donde cada entrada representa los datos de una aerolínea en particular. Cada elemento del array incluye los detalles de las aerolíneas como se describe a continuación.
+
+- **airline_name:** Devuelve el nombre completo de la aerolínea.
+
+- **iata_code:** Devuelve el código IATA de la aerolínea, que es un código de dos letras único asignado por la Asociación Internacional de Transporte Aéreo (IATA).
+
+- **iata_prefix_accounting:** Devuelve el prefijo o código contable de la aerolínea, utilizado en procesos administrativos y financieros de la industria.
+
+- **icao_code:** Devuelve el código ICAO de la aerolínea, un código de tres letras asignado por la Organización de Aviación Civil Internacional (ICAO), que suele utilizarse en procedimientos de vuelo y control de tráfico aéreo.
+
+- **callsign:** Devuelve el indicativo de llamada (callsign) de la aerolínea, usado en comunicaciones de radio durante las operaciones de vuelo.
+
+- **type:** Devuelve el tipo de aerolínea, indicando si es, por ejemplo, una aerolínea comercial, de carga, de bajo costo, regional, etc.
+
+- **status:** Devuelve el estado actual de la aerolínea, indicando si está operativa, inactiva o ha sido suspendida.
+
+- **fleet_size:** Devuelve el tamaño de la flota de la aerolínea, es decir, el número total de aeronaves que posee o utiliza para sus operaciones.
+
+- **fleet_average_age:** Devuelve la edad promedio de las aeronaves en la flota, lo cual es un indicador del envejecimiento de la flota.
+
+- **date_founded:** Devuelve el año en que se fundó la aerolínea.
+
+- **hub_code:** Devuelve el código del hub o centro de conexiones principal de la aerolínea, donde tiene su base principal de operaciones.
+
+- **country_name:** Devuelve el nombre del país de origen de la aerolínea.
+
+- **country_iso2:** Devuelve el código ISO de dos letras del país de origen de la aerolínea, utilizado para identificar el país de manera estandarizada (por ejemplo, "US" para Estados Unidos).
 
 ## Herramientas Usadas :computer:
 
@@ -69,26 +99,10 @@ Este Dataset contiene informacion sobre vuelos retrasados en el año 2019 con in
 
 - **Power BI:** Para la visualizacion de Datos
 
-## Estructura del Repositorio :card_index:
-La estructura del repositorio es la siguiente
-
-- **Database:**  Carpeta en donde se encuentran loa archivos relacionados con las acciones que interactúan directamente con la Base de Datos en postgreSQL
-    - **carga_datasets:** Este es un notebook en el cual cargamos los Datasets a las tablas creadas en el postgreSQL
-    - **conexion_DB: E**s un archivo .py en donde realizamos la conexión con nuestra Base de Datos
-    - **tablas_dataset:** Es un notebook en donde creamos las tablas en la Database  para posteriormente cargar el dataset
-    - **_int_.py:** es un directorio, Python reconoce ese directorio como un paquete, lo que permite que los módulos dentro de ese directorio se puedan importar usando la sintaxis de puntos (.).
-- **Datasets:** Carpeta en donde se encuentran todos los Datasets utilizados
-    - **train.csv:**  Es el dataset original que contiene información sobre vuelos que han sido trasados
-    - **flights_limpio:** Es el dataset ya limpio listo para la vizualisacion de datos 
-- **EDA:** Carpeta en donde se encuentran los archivos que leen el dataset en la base de datos
-    - **flights_EDA:** Notebook en donde se realiza en EDA al dataset original
-    - **flights_ transformado_EDA:** Notebook en donde se hace un eda al dataset ya limpio y transformado con el objetivo de sacar concluciones finales para seguir con la vizualisacion de datos en PowerBI
-- **.gitignore:** archivo en donde colocaremos los archivos que no queremos que se suban a nuestro repositorio de GitHub, como lo es nuestro entorno virtual
-- **.gitattributes:** Archivo donde almacenamos nuestros 2 datasets para que se puedan subir al repositorio de github sin problema usando la libreria Git LFS
-- **readme.txt:** archivo en donde ira la descripción y el paso a paso para ejecucion del proyecto
-- **requirements.txt:** archivo en donde estarán  todas las librerías/bibliotecas o instalaciones usadas en nuestro proyecto
-- **Dashboard_flights_delayed.pdf:** Archivo pdf en donde3 se encuentran las vizualisaciones finales  en PowerBI 
-
+- **Docker:** Para orquestar y configurar dos servicios relacionados con Apache Kafka
+- **ZooKeeper:** Para configurar el servicio de coordinación que Apache Kafka que utiliza para la gestión de clústeres y la sincronización de datos.
+- **Kafka:** Como broker para procesar y manejar mensajes.
+- **plotly Dash:** Para realizar el dashboar en tiempo Real.
 
 ## Instrucciones para la ejecucion: :pencil:
 
@@ -97,30 +111,32 @@ La estructura del repositorio es la siguiente
 - PostgreSQL: https://www.postgresql.org/
 - PowerBI: https://www.microsoft.com/es-es/download/details.aspx?id=58494
 - pgAdmin(Opcional):https://www.pgadmin.org/
-
+- Docker: https://www.docker.com/
+- Kafka: https://kafka.apache.org/
+- plotly Dash: https://dash.plotly.com/
 
 Clonamos el repositorio en nuestro entorno
 
 ```bash
-  git clone https://github.com/camilodelgado23/Proyecto_1.git
+  git clone https://github.com/camilodelgado23/proyecto_vuelos_final.git
 ```
 
 Vamos al repositorio clonado
 
 ```bash
-  cd Proyecto_1
+  cd proyecto_vuelos_final
 ```
 
 Instalamos el entrono virtual donde vamos a trabajar
 
 ```bash
-  python -m venv entorno
+  Python -m venv venv 
 ```
 
 Iniciamos el entorno
 
 ```bash
-  .\venv\Scripts\Activate
+  source venv/bin/activate
 ```
 
 Instalamos las librerias necesarias almacenadas en el archivo requirements.txt
@@ -128,25 +144,10 @@ Instalamos las librerias necesarias almacenadas en el archivo requirements.txt
 ```bash
   pip install -r requirements.txt
 ```
-## Airflow
-Creamos en el directorio raiz del proyecto un archivo llamado .env y le agregamos esta variable AIRFLOW_UID=50000
-```bash
-AIRFLOW_UID=50000
-```
-Corremos el Dockerfile y el Docker Compose para Correr Airflow
-```bash
-docker compose build
-```
-luego lo corremos con 
-```bash
-docker compose up -d
-```
-
 
 Creamos la Base de Datos en PostgreSQL
 
 ![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2Ff89f0ee0-6df7-499d-965d-87a335bc5d80%2Fimage.png?table=block&id=5f9300c4-66f8-47f7-940d-1e04ad64223d&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=980&userId=&cache=v2)
-
 
 Creamos el archivo credentials.py donde almacenaremos las credenciales para conectarnos a la Base de Datos, puede seguir la siguiente estructura
 
@@ -159,28 +160,27 @@ Creamos el archivo credentials.py donde almacenaremos las credenciales para cone
 ```
 Podemos probar si las credenciales son correctas ejecutando nuestro archivo conexion.py.
 
-### Para una correcta ejecucion del proyecto lo podemos ejecutar en el siguiente orden: :file_folder:
+## Airflow
+Escalamos el Airflow 
 
-- Primero ejecutamos el notebook tablas_dataset (Para crear las tablas en la Base de Datos)
-- Luego ejecutamos el notebook carga_datasets (Para insertar los datasets en las tablas)
-- Finalmente podemos ejecutar el notebook flights_EDA (En donde realizamos un E.D.A al dataset original y exportamos el dataset limpio) 
-- y el notebook flights_trtansformado_EDA (En donde realizamos un E.D.A al dataset ya limpio para realizar un analisis mas a fondo de los datos)
+```bash
+  airflow standalone
+```
+una vez adentro iniciamos nos dirigimos a p://localhost:8080 e iniciamos secion con el usuario y contraseña que nos aparece en las líneas de código, y en la seccion de Dags buscamos el dag llamado etl_dag
 
-### Para conectarnos a PowerBI :bar_chart:
+![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2Fb69d6a98-9834-4889-b189-d5e8069dd0be%2FWhatsApp_Image_2024-11-15_at_2.07.04_PM.jpeg?table=block&id=14038733-ed67-8008-a65f-c2010c131cf6&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1420&userId=&cache=v2)
 
-Nos vamos a PowerBI y lo iniciamos, nos vamos a la pantalla de inicio y le damos a obtener datos donde buscaremos la opción de Base de datos PostgreSQL
+![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2F9da1b03e-f384-47a6-bc0b-1a4f5026ac5f%2FWhatsApp_Image_2024-11-15_at_10.32.56_PM.jpeg?table=block&id=14038733-ed67-80df-8738-e3450d9b77b1&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1420&userId=&cache=v2)
 
-![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2Fdf6ee716-6814-4a82-b5a9-f23ff54c2ca5%2Fimage.png?table=block&id=0358baac-ef87-4df1-b5c5-dd70a6b505c1&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1180&userId=&cache=v2)
+luego corremos el docker para el funcionamiento del kafka 
+```bash
+docker compose up -d
+```
 
-Seleccionamos la Base de datos PostgreSQL 
+Finalmente Podemos ver el funcionamiento del dashboard en tiempo Real como se puede observar en el siguiente video para descargar:
 
-![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2F871e8453-72c1-4078-ae7f-c7226edf1c0b%2Fimage.png?table=block&id=1da1eb9f-791f-43a5-8610-55de8886a783&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1300&userId=&cache=v2)
-
-Colocamos nuestras credenciales 
-
-![Texto alternativo](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2F65c27ce9-6033-4191-a255-091d2188cfcc%2Fimage.png?table=block&id=5a553038-c064-44e4-b606-00894cd1daec&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1160&userId=&cache=v2)
-
-Finalmente seleccionamos la tabla en donde tenemos el dataset limpio y ya estaremos conectados con PowerBI 
+## Video de Ejemplo
+[![Ver Video](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2F98477692-e812-4bec-b74d-40244e053626%2Fimage.png?table=block&id=14038733-ed67-8022-9bf6-d7ed1ab6b051&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1310&userId=&cache=v2)](https://drive.google.com/file/d/1sRuprHRY_VacPTuxca8XeINJRowTnfR-/view?usp=sharing)
 
 ## Gracias por revisar este proyecto :wave:# flights
 # flights
