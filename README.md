@@ -177,9 +177,9 @@ luego corremos el docker para el funcionamiento del kafka
 docker compose up -d
 ```
 
-Finalmente Podemos ver el funcionamiento del dashboard en tiempo Real como se puede observar en el siguiente video para descargar:
+Finalmente Podemos ver el funcionamiento del dashboard en tiempo Real como se puede observar en el siguiente video, dele clik a la imagen para redireccionarlo al video en drive. 
 
-## Video de Ejemplo
+## Video
 [![Ver Video](https://imagenes.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb687bcac-6636-49ac-8ce3-1adf66aa571c%2F98477692-e812-4bec-b74d-40244e053626%2Fimage.png?table=block&id=14038733-ed67-8022-9bf6-d7ed1ab6b051&spaceId=b687bcac-6636-49ac-8ce3-1adf66aa571c&width=1310&userId=&cache=v2)](https://drive.google.com/file/d/1sRuprHRY_VacPTuxca8XeINJRowTnfR-/view?usp=sharing)
 
 ## Gracias por revisar este proyecto :wave:# flights
